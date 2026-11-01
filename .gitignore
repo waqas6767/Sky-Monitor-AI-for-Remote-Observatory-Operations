@@ -1,0 +1,7 @@
+assets/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+user_places.json
+_download.zip

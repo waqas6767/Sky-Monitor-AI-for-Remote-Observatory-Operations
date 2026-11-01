@@ -1,0 +1,282 @@
+{
+  "feature_auc": [
+    {
+      "Feature (sky pixels only)": "Mean sky brightness",
+      "AUC": 0.654
+    },
+    {
+      "Feature (sky pixels only)": "Sky std (contrast)",
+      "AUC": 0.741
+    },
+    {
+      "Feature (sky pixels only)": "Mean gradient (texture)",
+      "AUC": 0.775
+    },
+    {
+      "Feature (sky pixels only)": "Star-like peaks",
+      "AUC": 0.81
+    },
+    {
+      "Feature (sky pixels only)": "All 4 — logistic regression (CV by night)",
+      "AUC": 0.858
+    },
+    {
+      "Feature (sky pixels only)": "All 4 — gradient boosting (CV by night)",
+      "AUC": 0.87
+    }
+  ],
+  "validation": [
+    {
+      "Model": "Small CNN",
+      "Val AUC": 0.953,
+      "Val accuracy": 0.854
+    },
+    {
+      "Model": "ResNet-18 v2",
+      "Val AUC": 0.919,
+      "Val accuracy": 0.906
+    },
+    {
+      "Model": "ResNet-18 v3",
+      "Val AUC": 0.927,
+      "Val accuracy": 0.892
+    },
+    {
+      "Model": "Ensemble Small CNN + ResNet v2",
+      "Val AUC": 0.959,
+      "Val accuracy": 0.901
+    },
+    {
+      "Model": "Ensemble of all 3 (final)",
+      "Val AUC": 0.954,
+      "Val accuracy": 0.908
+    }
+  ],
+  "clustering": [
+    {
+      "Features": "Hand-crafted",
+      "Method": "K-means k=2",
+      "Silhouette": 0.304,
+      "ARI": 0.005,
+      "NMI": 0.003,
+      "Purity": 0.558
+    },
+    {
+      "Features": "Hand-crafted",
+      "Method": "K-means k=3",
+      "Silhouette": 0.328,
+      "ARI": 0.083,
+      "NMI": 0.108,
+      "Purity": 0.688
+    },
+    {
+      "Features": "Hand-crafted",
+      "Method": "K-means k=5",
+      "Silhouette": 0.319,
+      "ARI": 0.083,
+      "NMI": 0.118,
+      "Purity": 0.701
+    },
+    {
+      "Features": "Hand-crafted",
+      "Method": "GMM k=2",
+      "Silhouette": "—",
+      "ARI": 0.0,
+      "NMI": "—",
+      "Purity": 0.558
+    },
+    {
+      "Features": "CNN embedding",
+      "Method": "K-means k=2",
+      "Silhouette": 0.174,
+      "ARI": 0.488,
+      "NMI": 0.391,
+      "Purity": 0.85
+    },
+    {
+      "Features": "CNN embedding",
+      "Method": "K-means k=4",
+      "Silhouette": 0.231,
+      "ARI": 0.252,
+      "NMI": 0.276,
+      "Purity": 0.827
+    },
+    {
+      "Features": "CNN embedding",
+      "Method": "K-means k=5",
+      "Silhouette": 0.22,
+      "ARI": 0.284,
+      "NMI": 0.389,
+      "Purity": 0.918
+    },
+    {
+      "Features": "CNN embedding",
+      "Method": "GMM k=2",
+      "Silhouette": "—",
+      "ARI": 0.548,
+      "NMI": "—",
+      "Purity": 0.87
+    }
+  ],
+  "cluster_descriptions": [
+    "Dark grey-to-black skies with faint stars, deep blue twilight-like skies and frames with the moon low near the horizon. Almost entirely clear.",
+    "Skies with visible cloud structure: dark gaps between clouds, lumpy cloud bases. Orange-brown frames are low cloud lit from below by the town's street lights.",
+    "Bright blue, almost daytime-looking skies around the full moon (19–20 Nov 2021): moonlight is reflected sunlight, scattered blue by the atmosphere in a 15-s exposure.",
+    "Frames covered with small round spots: water droplets on the camera's protective dome (rainy or very humid nights). Not a separate class in the original labels, but the most important one for protecting the telescope.",
+    "Very bright, nearly uniform white overcast lit by a bright moon, plus moonlit broken cloud. The most ambiguous group, where most model errors occur."
+  ],
+  "training_logs": {
+    "Small CNN (from scratch)": {
+      "train_loss": [
+        0.227,
+        0.179,
+        0.18,
+        0.165,
+        0.151,
+        0.127,
+        0.119,
+        0.106,
+        0.104,
+        0.086,
+        0.09,
+        0.081,
+        0.062,
+        0.06,
+        0.056
+      ],
+      "val_loss": [
+        0.705,
+        0.334,
+        0.361,
+        0.45,
+        0.376,
+        0.461,
+        0.314,
+        0.365,
+        1.362,
+        0.292,
+        0.383,
+        0.465,
+        0.532,
+        0.498,
+        0.481
+      ],
+      "train_acc": [
+        0.916,
+        0.938,
+        0.939,
+        0.945,
+        0.951,
+        0.959,
+        0.958,
+        0.962,
+        0.964,
+        0.969,
+        0.968,
+        0.971,
+        0.978,
+        0.979,
+        0.98
+      ],
+      "val_acc": [
+        0.78,
+        0.872,
+        0.902,
+        0.898,
+        0.91,
+        0.797,
+        0.86,
+        0.862,
+        0.613,
+        0.854,
+        0.895,
+        0.848,
+        0.837,
+        0.841,
+        0.863
+      ]
+    },
+    "ResNet-18: head, then ALL layers (lr 1e-4)": {
+      "train_loss": [
+        0.223,
+        0.118,
+        0.1,
+        0.096,
+        0.091,
+        0.052,
+        0.025,
+        0.025,
+        0.02
+      ],
+      "val_loss": [
+        0.293,
+        0.375,
+        0.459,
+        0.405,
+        0.39,
+        0.865,
+        0.956,
+        0.816,
+        1.545
+      ],
+      "train_acc": [
+        0.929,
+        0.965,
+        0.967,
+        0.971,
+        0.974,
+        0.983,
+        0.991,
+        0.992,
+        0.993
+      ],
+      "val_acc": [
+        0.904,
+        0.895,
+        0.878,
+        0.893,
+        0.906,
+        0.848,
+        0.851,
+        0.872,
+        0.793
+      ]
+    },
+    "ResNet-18 v2: head, then layer4 (lr 3e-5)": {
+      "train_loss": [
+        0.234,
+        0.152,
+        0.139,
+        0.095,
+        0.055,
+        0.037
+      ],
+      "val_loss": [
+        0.318,
+        0.346,
+        0.297,
+        0.526,
+        0.769,
+        0.765
+      ],
+      "train_acc": [
+        0.924,
+        0.949,
+        0.954,
+        0.968,
+        0.979,
+        0.987
+      ],
+      "val_acc": [
+        0.894,
+        0.892,
+        0.906,
+        0.859,
+        0.828,
+        0.855
+      ]
+    }
+  },
+  "training_note": "The ResNet runs train only the final layer first (frozen ImageNet backbone), then unfreeze more of the network. Validation loss jumps the moment deeper layers start learning: with ~24 training nights the network memorises night-specific conditions. Frozen BatchNorm, L2-SP and physical augmentation (v3) keep fine-tuning stable but do not beat the frozen backbone. The best checkpoint of each run (lowest validation loss) is the one kept.",
+  "limitations_md": "- **Coarse labels.** Frames were labelled in time blocks of 1–2 h, while cloud cover changes within minutes. On the mixed night 2021-11-24, almost an hour of overcast frames is labelled *fine*; the model is confidently (and correctly) saying *cloudy*.\n- **Two classes for a continuous sky.** Partly cloudy frames have no correct binary answer. The model's intermediate probabilities (0.3–0.7) are appropriate there.\n- **Moonlight.** Bright moonlit skies are the hardest condition, and in this dataset moon phase is partly correlated with the class.\n- **Few independent samples.** Frames within a night are highly correlated, so the effective sample size is closer to 32 nights than 8,806 images; results depend on which nights are in the test set.\n- **Future work:** frame-level relabelling, three classes (clear / cloudy / rain) or cloud-fraction regression, and more nights — especially moonlit ones."
+}

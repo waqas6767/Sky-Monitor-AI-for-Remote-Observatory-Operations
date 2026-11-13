@@ -9,7 +9,7 @@ as an interactive Streamlit app.**
 **▶ Live demo:** [sky-monitor-ai-for-remote-observatory-operations.streamlit.app](https://sky-monitor-ai-for-remote-observatory-operations-ybn86wj9z54ze.streamlit.app/)
 &nbsp;·&nbsp; **📖 Book:** [Clear or Cloudy? (PDF)](docs/Clear_or_Cloudy_Muhammad_Waqas.pdf)
 &nbsp;·&nbsp; **🧠 Models:** [Release v1.0](https://github.com/waqas6767/Sky-Monitor-AI-for-Remote-Observatory-Operations/releases/tag/v1.0)
-&nbsp;·&nbsp; **📄 Paper:** [Preprint (PDF)](docs/SkyMonitorAI_paper.pdf), submitted to arXiv (astro-ph.IM)
+&nbsp;·&nbsp; **📄 Paper:** [Preprint (PDF)](docs/SkyMonitorAI_paper.pdf), [arXiv:2611.14987](https://arxiv.org/abs/2611.14987) (astro-ph.IM)
 
 A small auxiliary camera at the Higashi-Hiroshima Observatory (Hiroshima University) photographs the whole
 sky about once a minute. This project trains convolutional neural networks on **8,806 frames from 32 nights**
@@ -142,7 +142,7 @@ by Muhammad Waqas.
 
 The methods and results are described in the preprint
 [*Sky Monitor AI: classifying night-sky conditions from an observatory all-sky camera with a CNN ensemble,
-label-free sky types and exact evidence maps*](docs/SkyMonitorAI_paper.pdf) (M. Waqas, 2026), submitted to arXiv
+label-free sky types and exact evidence maps*](docs/SkyMonitorAI_paper.pdf) (M. Waqas, 2026), [arXiv:2611.14987](https://arxiv.org/abs/2611.14987)
 (astro-ph.IM). If you use this code, please cite the paper.
 
 ## Author
